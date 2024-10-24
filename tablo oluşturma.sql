@@ -1,8 +1,8 @@
 create database otelDB
 use otelDB
------tablo taslaklarýný oluþturma iþlemleri:
+-----tablo taslaklarÃ½nÃ½ oluÃ¾turma iÃ¾lemleri:
 
---odalar tablosu oluþturma
+--odalar tablosu oluÃ¾turma
 create table odalar(
 	odaID int primary key identity (1,1),
 	odaNumarasi nvarchar(10),
@@ -11,7 +11,7 @@ create table odalar(
 	odaDurumu nvarchar(10)
 	)
 -------------------------------------
--- müþteriler tablosu oluþturma
+-- mÃ¼Ã¾teriler tablosu oluÃ¾turma
 create table musteriler(
 	musteriID int primary key identity(1,1),
 	musteriAd nvarchar(50),
@@ -21,7 +21,7 @@ create table musteriler(
 	musteriAdres nvarchar(100),
 	musteriTC nvarchar(20),
 )
---rezervasyon tablosu oluþturma
+--rezervasyon tablosu oluÃ¾turma
 create table rezervasyon(
 	rezervasyonID int primary key identity(1,1),
 	odaID int,
@@ -32,7 +32,7 @@ create table rezervasyon(
 	FOREIGN KEY (odaID) REFERENCES odalar(odaID) ON DELETE CASCADE,
     FOREIGN KEY (musteriID) REFERENCES musteriler(musteriID) ON DELETE CASCADE
 )
---ödemeler tablosu oluþturma
+--Ã¶demeler tablosu oluÃ¾turma
 create table odemeler(
 	odemeID int primary key identity(1,1),
 	rezervasyonID int,
@@ -41,7 +41,7 @@ create table odemeler(
 	odemeTuru nvarchar(10)
 	FOREIGN KEY (rezervasyonID) REFERENCES rezervasyon(rezervasyonID) ON DELETE CASCADE
 )
--- oda servisleri tablosu oluþturma 
+-- oda servisleri tablosu oluÃ¾turma 
 create table odaservisleri(
 	servisID int primary key identity(1,1),
 	odaID int,
@@ -50,13 +50,5 @@ create table odaservisleri(
 	fiyat decimal(10,2),
 	FOREIGN KEY (odaID) REFERENCES odalar(odaID) ON DELETE CASCADE
 )
--- personel tablosu oluþturma
- create table personel(
-	personelID int primary key identity (1,1),
-	personelAd nvarchar(20),
-	personelSoyad nvarchar(20),
-	gorev nvarchar(20),
-	personelTelefon nvarchar (20),
-	personelEmail nvarchar(50),
-	vardiyaVakti nvarchar(20),
- )
+
+
