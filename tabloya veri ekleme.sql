@@ -1,8 +1,8 @@
 USE otelDB;
 ----------------------------------------------------
---MÜÞTERÝ TABLOSUNA RANDOM VERÝ OLUÞTURMA--
+--MÃœÅžTERÄ° TABLOSUNA RANDOM VERÄ° OLUÅžTURMA--
 -------------------------------------------------
--- Gerekli deðiþkenleri tanýmlýyoruz
+-- Gerekli deÄŸiÅŸkenleri tanÄ±mlÄ±yoruz
 /*DECLARE @i INT = 1;
 DECLARE @Ad NVARCHAR(50);
 DECLARE @Soyad NVARCHAR(50);
@@ -14,87 +14,87 @@ DECLARE @TC NVARCHAR(11) = '';
 
 ALTER TABLE musteriler
 ALTER COLUMN musteriEmail NVARCHAR(100);
--- Ýsimler tablosu
+-- Ä°simler tablosu
 DECLARE @Isimler TABLE (Ad NVARCHAR(50));
 INSERT INTO @Isimler (Ad) VALUES
-('Ahmet'), ('Mehmet'), ('Ayþe'), ('Fatma'), ('Ali'), ('Veli'),
-('Elif'), ('Zeynep'), ('Hasan'), ('Hüseyin'), ('Emine'), ('Selin'),
+('Ahmet'), ('Mehmet'), ('AyÅŸe'), ('Fatma'), ('Ali'), ('Veli'),
+('Elif'), ('Zeynep'), ('Hasan'), ('HÃ¼seyin'), ('Emine'), ('Selin'),
 ('Kemal'), ('Leyla'), ('Murat'), ('Hakan'), ('Cem'), ('Sibel'),
-('Merve'), ('Barýþ'), ('Gül'), ('Melike'), ('Burak'), ('Furkan'),
+('Merve'), ('BarÄ±ÅŸ'), ('GÃ¼l'), ('Melike'), ('Burak'), ('Furkan'),
 ('Berk'), ('Serkan'), ('Deniz'), ('Derya'), ('Ceren'), ('Gizem'),
-('Yaðmur'), ('Esra'), ('Can'), ('Bora'), ('Nazlý'), ('Zehra');
+('YaÄŸmur'), ('Esra'), ('Can'), ('Bora'), ('NazlÄ±'), ('Zehra');
 
 -- Soyadlar tablosu
 DECLARE @Soyadlar TABLE (Soyad NVARCHAR(50));
 INSERT INTO @Soyadlar VALUES
-('Kaya'), ('Yýlmaz'), ('Koþar'), ('Çelik'), ('Demir'), ('Yýldýz'),
-('Aydýn'), ('Korkmaz'), ('Özdemir'), ('Koç'), ('Doðan'), ('Þahin'),
-('Eren'), ('Çiçek'), ('Aþkýn'), ('Karabulut'), ('Aksoy'), ('Güler'),
-('Uzun'), ('Acar'), ('Polat'), ('Büyük'), ('Sezer'), ('Bozkurt'),
-('Yavuz'), ('Güneþ'), ('Aslan'), ('Sevinç'), ('Erden'), ('Öztürk'),
-('Duman'), ('Þen'), ('Toprak'), ('Korkut'), ('Iþýk'), ('Özcan');
+('Kaya'), ('YÄ±lmaz'), ('KoÅŸar'), ('Ã‡elik'), ('Demir'), ('YÄ±ldÄ±z'),
+('AydÄ±n'), ('Korkmaz'), ('Ã–zdemir'), ('KoÃ§'), ('DoÄŸan'), ('Åžahin'),
+('Eren'), ('Ã‡iÃ§ek'), ('AÅŸkÄ±n'), ('Karabulut'), ('Aksoy'), ('GÃ¼ler'),
+('Uzun'), ('Acar'), ('Polat'), ('BÃ¼yÃ¼k'), ('Sezer'), ('Bozkurt'),
+('Yavuz'), ('GÃ¼neÅŸ'), ('Aslan'), ('SevinÃ§'), ('Erden'), ('Ã–ztÃ¼rk'),
+('Duman'), ('Åžen'), ('Toprak'), ('Korkut'), ('IÅŸÄ±k'), ('Ã–zcan');
 
--- Þehirler tablosu
+-- Åžehirler tablosu
 DECLARE @Sehirler TABLE(Sehir NVARCHAR(50));
 INSERT INTO @Sehirler VALUES
-('Ýstanbul'), ('Ankara'), ('Mersin'), ('Ýzmir'), ('Van'), ('Diyarbakýr'),
-('Bursa'), ('Aydýn'), ('Balýkesir'), ('Eskiþehir'), ('Adýyaman'), ('Konya'),
-('Antalya'), ('Gaziantep'), ('Samsun'), ('Kayseri'), ('Þanlýurfa'), ('Trabzon'),
-('Muðla'), ('Malatya'), ('Sakarya'), ('Tekirdað'), ('Kocaeli'), ('Adana'),
-('Manisa'), ('Ordu'), ('Denizli'), ('Afyonkarahisar'), ('Nevþehir'), ('Rize'),
-('Kütahya'), ('Erzurum'), ('Sivas'), ('Elazýð'), ('Hatay'), ('Çorum'),
-('Kýrklareli'), ('Edirne'), ('Amasya'), ('Isparta'), ('Mardin'), ('Kars'),
-('Giresun'), ('Bartýn'), ('Sinop'), ('Tokat'), ('Bolu'), ('Düzce');
+('Ä°stanbul'), ('Ankara'), ('Mersin'), ('Ä°zmir'), ('Van'), ('DiyarbakÄ±r'),
+('Bursa'), ('AydÄ±n'), ('BalÄ±kesir'), ('EskiÅŸehir'), ('AdÄ±yaman'), ('Konya'),
+('Antalya'), ('Gaziantep'), ('Samsun'), ('Kayseri'), ('ÅžanlÄ±urfa'), ('Trabzon'),
+('MuÄŸla'), ('Malatya'), ('Sakarya'), ('TekirdaÄŸ'), ('Kocaeli'), ('Adana'),
+('Manisa'), ('Ordu'), ('Denizli'), ('Afyonkarahisar'), ('NevÅŸehir'), ('Rize'),
+('KÃ¼tahya'), ('Erzurum'), ('Sivas'), ('ElazÄ±ÄŸ'), ('Hatay'), ('Ã‡orum'),
+('KÄ±rklareli'), ('Edirne'), ('Amasya'), ('Isparta'), ('Mardin'), ('Kars'),
+('Giresun'), ('BartÄ±n'), ('Sinop'), ('Tokat'), ('Bolu'), ('DÃ¼zce');
 
--- 1000 rastgele müþteri verisi eklenmesi için döngü
+-- 1000 rastgele mÃ¼ÅŸteri verisi eklenmesi iÃ§in dÃ¶ngÃ¼
 WHILE @i <= 100000
 BEGIN
-    -- Rastgele ad seçimi
+    -- Rastgele ad seÃ§imi
     SELECT TOP 1 @Ad = Ad FROM @Isimler ORDER BY NEWID();
 
-    -- Rastgele soyad seçimi
+    -- Rastgele soyad seÃ§imi
     SELECT TOP 1 @Soyad = Soyad FROM @Soyadlar ORDER BY NEWID();
 
-    -- Rastgele e-posta oluþturma
+    -- Rastgele e-posta oluÅŸturma
     SET @Email = LOWER(@Ad) + LOWER(@Soyad) +'@gmail.com';
 
-    -- Rastgele þehir seçimi
+    -- Rastgele ÅŸehir seÃ§imi
     SELECT TOP 1 @Sehir = Sehir FROM @Sehirler ORDER BY NEWID();
 
-    -- Rastgele telefon numarasý oluþturma (05XX XXX XXXX formatýnda)
+    -- Rastgele telefon numarasÄ± oluÅŸturma (05XX XXX XXXX formatÄ±nda)
     SET @Telefon = '05' + CAST(FLOOR(RAND(CHECKSUM(NEWID())) * 9 + 1) AS NVARCHAR(1)) + 
                    CAST(FLOOR(RAND(CHECKSUM(NEWID())) * 900 + 100) AS NVARCHAR(3)) + 
                    CAST(FLOOR(RAND(CHECKSUM(NEWID())) * 9000 + 1000) AS NVARCHAR(4));
 
-    -- Rastgele adres oluþturma
-    SET @Adres = @Sehir + ' Mahallesi, No: ' + CAST(FLOOR(RAND(CHECKSUM(NEWID())) * 100 + 1) AS NVARCHAR(3));
 
-    -- Rastgele TC Kimlik Numarasý oluþturma (11 haneli)
+SET @Adres = @Sehir + ' Mahallesi, No: ' + CAST(FLOOR(RAND(CHECKSUM(NEWID())) * 100 + 1) AS NVARCHAR(3));
+
+    
 	
-		-- Ýlk hane 1-9 arasý rastgele bir rakam
+		-- Ä°lk hane 1-9 arasÄ± rastgele bir rakam
 	SET @TC = CAST(FLOOR(RAND(CHECKSUM(NEWID())) * 9) + 1 AS NVARCHAR);
 
-	-- Kalan 9 hane için rastgele rakamlar (10. hane)
+	-- Kalan 9 hane iÃ§in rastgele rakamlar (10. hane)
 	WHILE LEN(@TC) < 10
 	BEGIN
 		SET @TC = @TC + CAST(FLOOR(RAND(CHECKSUM(NEWID())) * 10) AS NVARCHAR);
 	END
 
-	-- 11. hane için tek sayý oluþtur
-	SET @TC = @TC + CAST(FLOOR(RAND(CHECKSUM(NEWID())) * 5) * 2 + 1 AS NVARCHAR); -- 1, 3, 5, 7, 9
+	
+	SET @TC = @TC + CAST(FLOOR(RAND(CHECKSUM(NEWID())) * 5) * 2 + 1 AS NVARCHAR); 
 
 
     INSERT INTO Musteriler(musteriAd, musteriSoyad, musteriTelefon, musteriEmail, musteriAdres,musteriTC)
     VALUES (@Ad, @Soyad, @Telefon, @Email, @Adres,@TC);
 
-    -- Sayaç artýrma
+    -- SayaÃ§ artÄ±rma
     SET @i = @i + 1;
 END*/
 /*DELETE FROM musteriler;
 DBCC CHECKIDENT ('musteriler', RESEED, 0);*/
 ------------------------------------------------------------------
 --------------------------------------------------------------------
---ODA TABLOSUNA VERÝ EKLEME---
+--ODA TABLOSUNA VERÄ° EKLEME---
 /* DECLARE @k int =1;
  Declare @l int =1;
  declare @odanumarasi int;
@@ -103,18 +103,18 @@ DBCC CHECKIDENT ('musteriler', RESEED, 0);*/
  declare @odadurumu nvarchar(20);
  ---oda durumu 
  declare @odadurumutable table (odadurumu nvarchar(20));
- insert into @odadurumutable values ('dolu'),('boþ'),('Tadilat'),('temizlik');
+ insert into @odadurumutable values ('dolu'),('boÅŸ'),('Tadilat'),('temizlik');
  ----------------------------------------------------------------------------------
  declare @odatipitable table (odatipi nvarchar(20));
  ----oda tipi
- insert into @odatipitable values ('Tek Kiþilik Oda'),('Çift Kiþilik Oda'),('üç Kiþilik Oda'),('Aile Odasý'),
- ('Süit Oda'),('Deluxe Oda'),('King Oda'),('Queen Oda'),('Balayý Süiti '),('Spa Süiti'),('Yüzme Havuzlu Oda'),
+ insert into @odatipitable values ('Tek KiÅŸilik Oda'),('Ã‡ift KiÅŸilik Oda'),('Ã¼Ã§ KiÅŸilik Oda'),('Aile OdasÄ±'),
+ ('SÃ¼it Oda'),('Deluxe Oda'),('King Oda'),('Queen Oda'),('BalayÄ± SÃ¼iti '),('Spa SÃ¼iti'),('YÃ¼zme Havuzlu Oda'),
  ('Panoramik Oda:'),('Engelli Dostu Oda');
  -----------------------------------------------------------------------------------
- ----oda numarasý
+ ----oda numarasÄ±
  declare @odanumarasitable table(odanumarasi int);
   --SET @odanumarasi = FLOOR(RAND(CHECKSUM(NEWID())) * 1000) + 1;
- --insert into @odanumarasitable values (@OdaNumarasý)
+ --insert into @odanumarasitable values (@OdaNumarasÄ±)
  while @l <10000
  begin
 	 SET @odanumarasi = FLOOR(RAND(CHECKSUM(NEWID())) * 1000) + 1;
@@ -129,31 +129,31 @@ DBCC CHECKIDENT ('musteriler', RESEED, 0);*/
  -------------------------
  select * from odalar
  ----------------------------------------------------
- -- Oda servisleri için deðiþkenleri tanýmlama 
+ -- Oda servisleri iÃ§in deÄŸiÅŸkenleri tanÄ±mlama 
  ---------------------------------------------------------
  /*DECLARE @odaID INT;
 DECLARE @servisTuru NVARCHAR(50);
 DECLARE @servisTarihi DATE;
 DECLARE @fiyat DECIMAL(10, 2);
 
--- Servis türleri için tablo oluþturma
+-- Servis tÃ¼rleri iÃ§in tablo oluÅŸturma
 DECLARE @servisTuruTable TABLE (servisTuru NVARCHAR(50));
 INSERT INTO @servisTuruTable VALUES 
-('Oda Temizliði'), ('Oda Servisi'), ('Çamaþýrhane Servisi'), ('Minibar Servisi'), 
-('Spa Hizmeti'), ('Yemek Servisi'), ('Wi-Fi Kullanýmý'), ('Klima Bakýmý'), ('TV Servisi');
+('Oda TemizliÄŸi'), ('Oda Servisi'), ('Ã‡amaÅŸÄ±rhane Servisi'), ('Minibar Servisi'), 
+('Spa Hizmeti'), ('Yemek Servisi'), ('Wi-Fi KullanÄ±mÄ±'), ('Klima BakÄ±mÄ±'), ('TV Servisi');
 
--- Oda servislerine rastgele veri eklemek için döngü
+-- Oda servislerine rastgele veri eklemek iÃ§in dÃ¶ngÃ¼
 DECLARE @i INT = 1;
 WHILE @i <= 10000 
 BEGIN
     
-    SELECT TOP 1 @odaID = odaID FROM odalar ORDER BY NEWID();--odalar tablosundan sesçme
+    SELECT TOP 1 @odaID = odaID FROM odalar ORDER BY NEWID();--odalar tablosundan sesÃ§me
     SELECT TOP 1 @servisTuru = servisTuru FROM @servisTuruTable ORDER BY NEWID();
 	
 	SET @servisTarihi = DATEADD(DAY, -FLOOR(RAND(CHECKSUM(NEWID())) * 365), GETDATE());
 
     
-    SET @fiyat = CAST(FLOOR(RAND(CHECKSUM(NEWID())) * 451) + 50 AS DECIMAL(10, 2));--  50 ile 500 TL arasýnda
+    SET @fiyat = CAST(FLOOR(RAND(CHECKSUM(NEWID())) * 451) + 50 AS DECIMAL(10, 2));--  50 ile 500 TL arasÄ±nda
    
     INSERT INTO odaservisleri (odaID, servisTuru, servistarihi, fiyat)
     VALUES (@odaID, @servisTuru, @servisTarihi, @fiyat);
@@ -170,28 +170,28 @@ declare @cikistarihi date;
 declare @durum nvarchar(20);
 
 declare @durumlar table(durum nvarchar(20));
-insert into @durumlar values('onaylandý'),('bekliyor'),('iptal edildi');
+insert into @durumlar values('onaylandÄ±'),('bekliyor'),('iptal edildi');
 declare @i int=1;
 while @i<100000
 	begin
 	 SELECT TOP 1 @odaid = odaID FROM odalar ORDER BY NEWID();
 	 SELECT TOP 1 @musterid=musteriID from musteriler order by newid();
 	 select top 1 @durum=durum from @durumlar order by newid();
-	if @durum = 'onaylandý'
+	if @durum = 'onaylandÄ±'
     begin
-        set @giristarihi = DATEADD(day, -ABS(CHECKSUM(NEWID()) % 30), GETDATE()); -- son 30 gün içinden rastgele bir tarih
-        set @cikistarihi = DATEADD(day, ABS(CHECKSUM(NEWID()) % 10), @giristarihi); -- giriþ tarihinden 1-10 gün sonrasýna kadar çýkýþ
+        set @giristarihi = DATEADD(day, -ABS(CHECKSUM(NEWID()) % 30), GETDATE()); -- son 30 gÃ¼n iÃ§inden rastgele bir tarih
+        set @cikistarihi = DATEADD(day, ABS(CHECKSUM(NEWID()) % 10), @giristarihi); -- giriÅŸ tarihinden 1-10 gÃ¼n sonrasÄ±na kadar Ã§Ä±kÄ±ÅŸ
     end
 
     if @durum = 'bekliyor'
     begin
-        set @giristarihi = DATEADD(day, ABS(CHECKSUM(NEWID()) % 30), GETDATE()); -- gelecekteki 30 gün içinde bir giriþ tarihi
-        set @cikistarihi = DATEADD(day, ABS(CHECKSUM(NEWID()) % 10), @giristarihi); -- giriþ tarihinden 1-10 gün sonrasýna kadar çýkýþ
+        set @giristarihi = DATEADD(day, ABS(CHECKSUM(NEWID()) % 30), GETDATE()); -- gelecekteki 30 gÃ¼n iÃ§inde bir giriÅŸ tarihi
+        set @cikistarihi = DATEADD(day, ABS(CHECKSUM(NEWID()) % 10), @giristarihi); -- giriÅŸ tarihinden 1-10 gÃ¼n sonrasÄ±na kadar Ã§Ä±kÄ±ÅŸ
     end
 
     if @durum = 'iptal edildi'
     begin
-        set @giristarihi = NULL; -- Ýptal edilen rezervasyon için tarih olmasýn
+        set @giristarihi = NULL; -- Ä°ptal edilen rezervasyon iÃ§in tarih olmasÄ±n
         set @cikistarihi = NULL;
     end
 
@@ -202,7 +202,7 @@ while @i<100000
 	*/
 
 
-------ÖDEMELER TABLOSU OLUÞTURMA 
+------Ã–DEMELER TABLOSU OLUÅžTURMA 
 --------------------------------------------------------
 
 /*DECLARE @rezervasyonid INT;
@@ -237,7 +237,7 @@ BEGIN
         r.rezervasyonID = @i;
 	if @odemetarihi is null or @odemetarihi>getdate()
 		begin
-			set @odemeturu='iþlem yok';
+			set @odemeturu='iÅŸlem yok';
 		end
 
 	
